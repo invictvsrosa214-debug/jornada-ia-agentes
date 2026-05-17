@@ -1,13 +1,9 @@
-from fastapi import FastAPI
+from fastapi import APIRouter
 
-app = FastAPI(
-    title="API GPT - Jornada IA",
-    description="Primeira API da jornada de IA e agentes",
-    version="0.1.0"
-)
+router = APIRouter()
 
 
-@app.get("/")
+@router.get("/")
 def home():
     return {
         "mensagem": "API funcionando com sucesso",
@@ -15,14 +11,14 @@ def home():
     }
 
 
-@app.get("/health")
+@router.get("/health")
 def health():
     return {
         "status": "ok"
     }
 
 
-@app.get("/ask")
+@router.get("/ask")
 def ask(pergunta: str):
     return {
         "pergunta": pergunta,
